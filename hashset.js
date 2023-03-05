@@ -7,16 +7,23 @@ class HashSet {
     this.state = {}
   }
 
-  add(key, val = null) {
-    this.state[key] = val
+  add(item) {
+    if(!(item in this.state)) {
+      this.state[item] = true
+    }
+    return false
   }
 
-  remove(key) {
-    delete this.state[key]
+  remove(item) {
+    if(item in this.state) {
+      delete this.state[item]
+      return true
+    }
+    return false
   }
 
-  contains(key) {
-    return this.state[key] ? true : false
+  contains(item) {
+    return this.state[item] ? true : false
   }
 
   isEmpty() {
